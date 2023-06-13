@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Create directories
+mkdir -p cmd/cryptex
+mkdir -p internal/app/handlers
+mkdir -p internal/app/services
+mkdir -p internal/app/repositories
+mkdir -p internal/app/dtos
+mkdir -p internal/domain/user
+mkdir -p internal/domain/wallet
+mkdir -p internal/domain/order
+mkdir -p internal/domain/event
+mkdir -p internal/infrastructure/repositories
+mkdir -p internal/infrastructure/external
+mkdir -p internal/infrastructure/messaging
+mkdir -p internal/infrastructure/logging
+mkdir -p internal/infrastructure/configuration
+mkdir -p web/controllers
+mkdir -p web/middlewares
+mkdir -p web/presenters
+mkdir -p web/views
+
+# Create files
+touch cmd/cryptex/main.go
+touch internal/app/handlers/user_handler.go
+touch internal/app/handlers/wallet_handler.go
+touch internal/app/handlers/order_handler.go
+touch internal/app/services/user_service.go
+touch internal/app/services/wallet_service.go
+touch internal/app/services/order_service.go
+touch internal/app/repositories/user_repository.go
+touch internal/app/repositories/wallet_repository.go
+touch internal/app/repositories/order_repository.go
+touch internal/app/dtos/user_dto.go
+touch internal/app/dtos/wallet_dto.go
+touch internal/app/dtos/order_dto.go
+touch internal/domain/user/user.go
+touch internal/domain/user/user_valueobjects.go
+touch internal/domain/wallet/wallet.go
+touch internal/domain/wallet/wallet_valueobjects.go
+touch internal/domain/order/order.go
+touch internal/domain/order/order_valueobjects.go
+touch internal/domain/event/event.go
+touch internal/infrastructure/repositories/sql_repository.go
+touch internal/infrastructure/repositories/external_repository.go
+touch internal/infrastructure/external/market_api_client.go
+touch internal/infrastructure/external/payment_gateway_client.go
+touch internal/infrastructure/messaging/event_dispatcher.go
+touch internal/infrastructure/messaging/event_subscriber.go
+touch internal/infrastructure/logging/logger.go
+touch internal/infrastructure/configuration/config.go
+touch web/controllers/user_controller.go
+touch web/controllers/wallet_controller.go
+touch web/controllers/order_controller.go
+touch web/middlewares/auth_middleware.go
+touch web/middlewares/validation_middleware.go
+touch web/presenters/user_presenter.go
+touch web/presenters/wallet_presenter.go
+touch web/presenters/order_presenter.go
+touch web/views/user_view.gohtml
+touch web/views/wallet_view.gohtml
+touch web/views/order_view.gohtml
+
+say "Directory structure and files created successfully!"
