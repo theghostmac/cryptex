@@ -38,3 +38,7 @@ func NewOrder(bid bool, size Money) *Order {
 		TimeStamp: time.Now().UnixNano(),
 	}
 }
+
+func (l *Limit) AddOrder(o *Order) {
+	o.Limit = l
+}
