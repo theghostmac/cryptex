@@ -9,20 +9,6 @@ import (
 func TestNewLimit(t *testing.T) {
 	// Arrange.
 	testLimit := order.NewLimit(10_000)
-	buyOrder := order.NewOrder(true, 5)
-	// Assert.
-	testLimit.AddOrder(buyOrder)
-
-	fmt.Println(testLimit)
-}
-
-func TestNewOrder(t *testing.T) {
-
-}
-
-func TestDeleteOrder(t *testing.T) {
-	// Arrange.
-	testLimit := order.NewLimit(10_000)
 	buyOrderA := order.NewOrder(true, 5)
 	buyOrderB := order.NewOrder(true, 6)
 	buyOrderC := order.NewOrder(true, 7)
@@ -34,5 +20,11 @@ func TestDeleteOrder(t *testing.T) {
 	// Delete Order
 	testLimit.DeleteOrder(buyOrderB)
 
+	// Optionally, you can print the testLimit value for debugging
 	fmt.Println(testLimit)
+}
+
+func TestNewOrderBook(t *testing.T) {
+	ob := order.NewOrderBook()
+	fmt.Println(ob)
 }

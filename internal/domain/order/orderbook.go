@@ -25,6 +25,18 @@ type Limit struct {
 type OrderBook struct {
 	Asks []*Limit // If user wants to sell crypto, they ask.
 	Bids []*Limit // If user wants to buy crypto, they bid.
+
+	AskLimits map[Money]*Limit
+	BidLimits map[Money]*Limit
+}
+
+func NewOrderBook() *OrderBook {
+	return OrderBook{
+		Asks:      []*Limit{},
+		Bids:      []*Limit{},
+		AskLimits: make(map[Money]*Limit),
+		BidLimits: make(map[Money]*Limit),
+	}
 }
 
 func NewLimit(price Money) *Limit {
@@ -63,4 +75,12 @@ func (l *Limit) DeleteOrder(o *Order) {
 	l.TotalVolume -= o.Size
 
 	//TODO: resort the whole orders.
+}
+
+func (ob *OrderBook) PlaceOrder(price Money, o *Order) {
+
+}
+
+func (ob *OrderBook) add(price Money, o *Order) {
+
 }
