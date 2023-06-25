@@ -1,6 +1,9 @@
 package order
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 // Money represents any monetary value.
 type Money float64
@@ -31,6 +34,10 @@ func NewLimit(price Money) *Limit {
 	}
 }
 
+func (o *Order) String() string {
+	return fmt.Sprintf("[size: %.2f]", o.Size)
+}
+
 func NewOrder(bid bool, size Money) *Order {
 	return &Order{
 		Size:      size,
@@ -41,4 +48,19 @@ func NewOrder(bid bool, size Money) *Order {
 
 func (l *Limit) AddOrder(o *Order) {
 	o.Limit = l
+	l.Orders = append(l.Orders, o)
+	l.TotalVolume += o.Size
+}
+
+func (l *Limit) DeleteOrder(o *Order) {
+	for i := 0; i < len(l.Orders); i++ {
+		if l.Orders[i] == o {
+			l.Orders[i] = l.Orders[len(l.Orders)-1]
+			l.Orders = l.Orders[:len(l.Orders)-1]
+		}
+	}
+	o.Limit = nil
+	l.TotalVolume -= o.Size
+
+	//TODO: resort the whole orders.
 }
