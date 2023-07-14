@@ -8,6 +8,15 @@ import (
 // Money represents any monetary value.
 type Money float64
 
+// MatchEngine matches the ask with the bid.
+type MatchEngine struct {
+	Ask        *Order
+	Bid        *Order
+	SizeFilled float64
+	Price      Money
+}
+
+// Order is the container for a buy order content.
 type Order struct {
 	Size      Money
 	Bid       bool
