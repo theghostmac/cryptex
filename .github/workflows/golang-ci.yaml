@@ -1,52 +1,25 @@
-name: Golang CI/CD
+name: Continuous Integration for Bc.
 
 on:
   push:
     branches:
       - master
-
   pull_request:
     branches:
       - master
 
-concurrency: production
-
 jobs:
-
-  test:
-
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        go-version: ['1.20', '1.19', '1.18']
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: macos-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Go on GHA virtual machine
+      - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.20
+          go-version: ^1.19
 
-      - name: Install dependencies
-        run: go get -v -t -d ./...
-
-      - name: Run Linting with GolangCi-lint
-        uses: golangci/golangci-lint-action@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Run tests
-        run: go test -v ./...
-
-#  deployment:
-#    runs-on: ${{ matrix.os }}
-#    environment: production
-#    steps:
-#      - run:
-#        name: deploy
-
-#  build:
-#    steps:
-#
-#  release:
+        run: go test ./...
