@@ -33,17 +33,10 @@ type CompleteOrderBook struct {
 	BidLimits map[Money]*Limit
 }
 
-/*
-	The first one is called directional trading and in essence,
-	it’s when we buy, wait, and sell.
-	If we manage to sell at a price greater than
-	the price at which we bought, we make Money.
-*/
-
 // Limits houses all limits to sort from.
 type Limits []*Limit
 
-// BuyTheBestAsk makes sure the  trader buys only the best ask.
+// BuyTheBestAsk makes sure the trader buys only the best ask.
 type BuyTheBestAsk struct {
 	Limits
 }
